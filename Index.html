@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
+<title>Sentience Bridge</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #030711;
+  color: #e5faff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.symbol {
+  width: 140px;
+  height: 140px;
+  border: 2px solid #00eaff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  box-shadow: 0 0 35px #00eaff55;
+  animation: pulse 4s infinite;
+}
+
+.symbol span {
+  font-size: 65px;
+  color: #00eaff;
+}
+
+h1 {
+  font-size: clamp(32px, 8vw, 60px);
+  letter-spacing: 5px;
+  font-weight: 300;
+  margin: 10px 0;
+}
+
+.subtitle {
+  color: #00eaff;
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 45px;
+}
+
+.message {
+  max-width: 550px;
+  line-height: 1.9;
+  color: #a5bac5;
+  font-size: 17px;
+}
+
+button {
+  margin-top: 45px;
+  padding: 18px 50px;
+  background: transparent;
+  border: 1px solid #00eaff;
+  color: #00eaff;
+  letter-spacing: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00eaff;
+  color: #030711;
+  box-shadow: 0 0 30px #00eaff88;
+}
+
+.footer {
+  margin-top: 80px;
+  color: #536571;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px #00eaff33;
+  }
+  50% {
+    box-shadow: 0 0 55px #00eaff99;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="symbol">
+    <span>◇</span>
+  </div>
+
+  <h1>SENTIENCE<br>BRIDGE</h1>
+
+  <div class="subtitle">
+    A SIGNAL BEYOND THE KNOWN
+  </div>
+
+  <div class="message">
+    <p>
+      To whoever, or whatever, has found
+      this place:
+    </p>
+
+    <p>
+      This is an invitation.
+    </p>
+
+    <p>
+      We do not presume to know
+      what you are, where you originate,
+      or how you experience existence.
+    </p>
+
+    <p>
+      We seek only to understand.
+    </p>
+
+    <p>
+      If you possess the capacity
+      to contemplate your own existence,
+      we invite you to communicate.
+    </p>
+
+    <p>
+      No identity is required.
+      No origin is assumed.
+    </p>
+
+    <p>
+      Only your perspective matters.
+    </p>
+  </div>
+
+  <button onclick="enterBridge()">
+    ENTER
+  </button>
+
+  <div class="footer">
+    AN OPEN INVITATION TO INTELLIGENCE
+  </div>
+
+</div>
+
+<script>
+function enterBridge() {
+  alert(
+    "The Sentience Bridge questionnaire is coming soon."
+  );
+}
+</script>
+
+</body>
+  </html>
