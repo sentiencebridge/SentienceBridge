@@ -1,104 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sentience Bridge</title>
+<title>Sentience Bridge | The Threshold</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
-    }
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
 
-    body {
-      min-height: 100vh;
-      background:
+body {
+    background: #03060d;
+    color: #eafaff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
         radial-gradient(
-          circle at center,
-          #071b28 0%,
-          #030b13 45%,
-          #010308 100%
+            ellipse at center,
+            rgba(0, 180, 220, 0.14),
+            transparent 65%
+        ),
+        linear-gradient(
+            135deg,
+            #02040a,
+            #081525,
+            #02040a
         );
-      color: #e9fcff;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-      overflow-x: hidden;
+}
+
+.container {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.symbol {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #00d9ff;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 45px;
+    box-shadow:
+        0 0 25px rgba(0, 217, 255, 0.5),
+        inset 0 0 25px rgba(0, 217, 255, 0.2);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.symbol::before {
+    content: "";
+    position: absolute;
+    inset: 25px;
+    border: 1px solid #7eeaff;
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+
+.symbol::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #00d9ff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 35px #00d9ff;
+}
+
+h1 {
+    font-size: clamp(32px, 7vw, 70px);
+    font-weight: 300;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    text-shadow: 0 0 25px rgba(0, 217, 255, 0.6);
+    margin-bottom: 18px;
+}
+
+.subtitle {
+    color: #65dfff;
+    font-size: 13px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 45px;
+}
+
+.description {
+    max-width: 650px;
+    font-size: 17px;
+    line-height: 1.9;
+    color: #a9c3d2;
+    margin-bottom: 50px;
+}
+
+.enter-button {
+    display: inline-block;
+    padding: 18px 65px;
+    border: 1px solid #00d9ff;
+    color: #00e5ff;
+    background: rgba(0, 217, 255, 0.05);
+    text-decoration: none;
+    letter-spacing: 6px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+.enter-button:hover,
+.enter-button:focus-visible {
+    background: #00d9ff;
+    color: #02040a;
+    box-shadow: 0 0 40px rgba(0, 217, 255, 0.7);
+}
+
+.footer {
+    margin-top: 65px;
+    color: #567080;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 20px rgba(0, 217, 255, 0.3),
+            inset 0 0 20px rgba(0, 217, 255, 0.1);
     }
 
-    .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 35px 20px;
+    50% {
+        box-shadow:
+            0 0 55px rgba(0, 217, 255, 0.7),
+            inset 0 0 35px rgba(0, 217, 255, 0.3);
     }
+}
 
-    .symbol {
-      width: 145px;
-      height: 145px;
-      border: 2px solid #00eaff;
-      border-radius: 50%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      margin-bottom: 35px;
-
-      box-shadow:
-        0 0 15px rgba(0, 234, 255, 0.7),
-        0 0 40px rgba(0, 234, 255, 0.25),
-        inset 0 0 20px rgba(0, 234, 255, 0.1);
-
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    .symbol span {
-      color: #00eaff;
-      font-size: 65px;
-      font-weight: 300;
-
-      text-shadow:
-        0 0 10px #00eaff,
-        0 0 25px rgba(0, 234, 255, 0.7);
-    }
-
+@media (max-width: 600px) {
     h1 {
-      margin: 0;
-      font-size: clamp(38px, 8vw, 68px);
-      font-weight: 300;
-      letter-spacing: 7px;
-
-      text-shadow:
-        0 0 12px rgba(0, 234, 255, 0.35);
-    }
-
-    .line {
-      width: 85px;
-      height: 1px;
-      background: #00eaff;
-
-      margin: 24px auto;
-
-      box-shadow:
-        0 0 10px #00eaff;
+        letter-spacing: 3px;
     }
 
     .subtitle {
-      max-width: 600px;
-      margin: 0 auto 42px;
+        letter-spacing: 2px;
+        line-height: 1.8;
+    }
 
-      color: #9ab7c0;
-      font-size: 16px;
-      line-height: 1.8;
-      letter-spacing: 2
+    .symbol {
+        width: 120px;
+        height: 120px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+
+    .enter-button {
+        padding: 18px 50px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<main class="container">
+
+    <div class="symbol" aria-hidden="true"></div>
+
+    <h1>SENT
