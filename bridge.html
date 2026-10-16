@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sentience Bridge</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at center, rgba(40, 65, 90, 0.18), transparent 35%),
+        linear-gradient(to bottom, #030609 0%, #071018 48%, #020405 100%);
+      color: #e8edf2;
+      overflow-x: hidden;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 45px 20px 28px;
+      position: relative;
+    }
+
+    .page::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,0.012) 0px,
+          rgba(255,255,255,0.012) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      opacity: 0.35;
+    }
+
+    .header {
+      text-align: center;
+      z-index: 2;
+    }
+
+    .title {
+      font-size: clamp(2.2rem, 7vw, 5.5rem);
+      letter-spacing: 0.16em;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 10px rgba(170, 210, 255, 0.25),
+        0 0 30px rgba(80, 140, 200, 0.15);
+    }
+
+    .subtitle {
+      margin-top: 13px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(0.72rem, 2vw, 0.95rem);
+      letter-spacing: 0.33em;
+      text-transform: uppercase;
+      color: #8e9aa5;
+    }
+
+    .bridge-section {
+      width: min(1100px, 100%);
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 45px 0 35px;
+      z-index: 2;
+    }
+
+    .scene {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr minmax(180px, 320px) 1fr;
+      align-items: center;
+      gap: 0;
+    }
+
+    .portal-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .portal {
+      width: min(230px, 70vw);
+      height: 330px;
