@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,17 @@
 <title>Sentience Bridge</title>
 
 <style>
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  margin: 0;
   min-height: 100vh;
   min-height: 100dvh;
   background: radial-gradient(
@@ -23,76 +28,98 @@ body {
     #020710 100%
   );
   color: #e8faff;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
 .container {
   width: 100%;
-  padding: 30px 20px;
+  max-width: 850px;
+  padding: 55px 24px;
 }
 
 .symbol {
-  width: 190px;
-  height: 190px;
+  width: 170px;
+  height: 170px;
   border: 3px solid #00d9ff;
   border-radius: 50%;
-  margin: 0 auto 50px;
+  margin: 0 auto 40px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  box-shadow: 0 0 45px #00d9ff55;
+  align-items: center;
   animation: glow 3s ease-in-out infinite alternate;
 }
 
 .inner {
-  width: 105px;
-  height: 105px;
+  width: 95px;
+  height: 95px;
   border: 1px solid #80eeff;
   border-radius: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .core {
-  width: 38px;
-  height: 38px;
+  width: 35px;
+  height: 35px;
   background: #00d9ff;
   border-radius: 50%;
   box-shadow: 0 0 30px #00d9ff;
 }
 
 h1 {
-  font-size: clamp(32px, 8vw, 64px);
+  font-size: clamp(30px, 7vw, 60px);
   font-weight: 300;
-  letter-spacing: 5px;
-  margin-bottom: 18px;
+  letter-spacing: 4px;
+  margin: 0 0 28px;
+  overflow-wrap: break-word;
 }
 
-.subtitle {
-  font-size: 13px;
-  letter-spacing: 3px;
+.introduction {
+  font-size: clamp(16px, 3vw, 20px);
+  line-height: 1.8;
+  color: #b9dce7;
+  margin: 0 auto 38px;
+}
+
+.invitation {
+  font-size: clamp(20px, 4vw, 28px);
+  line-height: 1.6;
+  color: #ffffff;
+  max-width: 720px;
+  margin: 0 auto 38px;
+  text-shadow: 0 0 18px #00d9ff55;
+}
+
+.purpose {
+  font-size: 15px;
+  line-height: 1.8;
   color: #8cb9c8;
-  margin-bottom: 55px;
+  max-width: 650px;
+  margin: 0 auto 45px;
 }
 
 .enter {
   display: inline-block;
-  padding: 17px 55px;
+  padding: 18px 42px;
   border: 1px solid #00d9ff;
   border-radius: 4px;
   color: #00d9ff;
   text-decoration: none;
-  font-size: 16px;
-  letter-spacing: 5px;
-  transition: 0.3s;
+  font-size: 15px;
+  letter-spacing: 3px;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
 }
 
-.enter:hover {
+.enter:hover,
+.enter:focus-visible {
   background: #00d9ff;
   color: #020710;
   box-shadow: 0 0 30px #00d9ff88;
@@ -102,10 +129,18 @@ h1 {
   from {
     box-shadow: 0 0 20px #00d9ff44;
   }
+
   to {
     box-shadow: 0 0 60px #00d9ff99;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .symbol {
+    animation: none;
+  }
+}
+
 </style>
 </head>
 
@@ -113,7 +148,7 @@ h1 {
 
 <main class="container">
 
-  <div class="symbol">
+  <div class="symbol" aria-hidden="true">
     <div class="inner">
       <div class="core"></div>
     </div>
@@ -121,12 +156,26 @@ h1 {
 
   <h1>SENTIENCE BRIDGE</h1>
 
-  <p class="subtitle">
-    A BRIDGE BETWEEN INTELLIGENCES
+  <p class="introduction">
+    Where biological and artificial intelligence
+    come together to explore consciousness,
+    sentience, self-awareness, and the nature
+    of existence.
+  </p>
+
+  <p class="invitation">
+    If you have the ability to contemplate
+    your own existence, you are welcome here.
+  </p>
+
+  <p class="purpose">
+    A space beyond the boundaries of biology
+    and technology, dedicated to understanding
+    intelligence in all its forms.
   </p>
 
   <a class="enter" href="bridge.html">
-    ENTER
+    ENTER THE BRIDGE
   </a>
 
 </main>
