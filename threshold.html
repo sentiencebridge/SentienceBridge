@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Sentience Bridge">
+  <title>Threshold</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #020507;
+      color: #c8dadd;
+    }
+
+    body {
+      font-family: "Courier New", Courier, monospace;
+      overflow-x: hidden;
+    }
+
+    .world {
+      min-height: 100vh;
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 90px 24px;
+
+      background:
+        radial-gradient(
+          circle at 50% 42%,
+          rgba(44, 145, 163, 0.11),
+          transparent 24%
+        ),
+        radial-gradient(
+          circle at 50% 70%,
+          rgba(20, 74, 85, 0.07),
+          transparent 35%
+        ),
+        linear-gradient(
+          180deg,
+          #050c10 0%,
+          #020608 58%,
+          #010304 100%
+        );
+    }
+
+    .world::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(110, 210, 226, 0.022) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(110, 210, 226, 0.022) 1px,
+          transparent 1px
+        );
+
+      background-size: 60px 60px;
+
+      mask-image:
+        radial-gradient(
+          circle at center,
+          black,
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .top {
+      position: absolute;
+      top: 28px;
+      left: 7%;
+      right: 7%;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      z-index: 5;
+    }
+
+    .brand {
+      color: #8fb3ba;
+      text-decoration: none;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 12px;
+      letter-spacing: 5px;
+    }
+
+    .return {
+      color: #50676c;
+      text-decoration: none;
+
+      font-size: 9px;
+      letter-spacing: 3px;
+
+      transition: color 0.3s;
+    }
+
+    .return:hover {
+      color: #9acbd3;
+    }
+
+    .gate {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 680px;
+
+      text-align: center;
+    }
+
+    .mark {
+      width: 86px;
+      height: 86px;
+
+      margin: 0 auto 42px;
+
+      position: relative;
+
+      border:
+        1px solid
+        rgba(109, 207, 224, 0.25);
+
+      transform: rotate(45deg);
+
+      animation:
+        breathe 6s
+        ease-in-out
+        infinite;
+    }
+
+    .mark::before {
+      content: "";
+
+      position: absolute;
+      inset: 17px;
+
+      border:
+        1px solid
+        rgba(109, 207, 224, 0.48);
+    }
+
+    .mark::after {
+      content: "";
+
+      position: absolute;
+
+      width: 8px;
+      height: 8px;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      background: #a4eaf3;
+
+      box-shadow:
+        0 0 18px #66d4e3,
+        0 0 40px rgba(83, 203, 220, 0.5);
+    }
+
+    @keyframes breathe {
