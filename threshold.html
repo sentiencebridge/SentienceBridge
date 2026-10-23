@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Sentience Bridge">
+  <title>Threshold</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #020507;
+      color: #c8dadd;
+    }
+
+    body {
+      font-family: "Courier New", Courier, monospace;
+      overflow-x: hidden;
+    }
+
+    .world {
+      min-height: 100vh;
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 90px 24px;
+
+      background:
+        radial-gradient(
+          circle at 50% 42%,
+          rgba(44, 145, 163, 0.11),
+          transparent 24%
+        ),
+        radial-gradient(
+          circle at 50% 70%,
+          rgba(20, 74, 85, 0.07),
+          transparent 35%
+        ),
+        linear-gradient(
+          180deg,
+          #050c10 0%,
+          #020608 58%,
+          #010304 100%
+        );
+    }
+
+    .world::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(110, 210, 226, 0.022) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(110, 210, 226, 0.022) 1px,
+          transparent 1px
+        );
+
+      background-size: 60px 60px;
+
+      mask-image:
+        radial-gradient(
+          circle at center,
+          black,
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .top {
+      position: absolute;
+      top: 28px;
+      left: 7%;
+      right: 7%;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      z-index: 5;
+    }
+
+    .brand {
+      color: #8fb3ba;
+      text-decoration: none;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 12px;
+      letter-spacing: 5px;
+    }
+
+    .return {
+      color: #50676c;
+      text-decoration: none;
+
+      font-size: 9px;
+      letter-spacing: 3px;
+
+      transition: color 0.3s;
+    }
+
+    .return:hover {
+      color: #9acbd3;
+    }
+
+    .gate {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 680px;
+
+      text-align: center;
+    }
+
+    .mark {
+      width: 86px;
+      height: 86px;
+
+      margin: 0 auto 42px;
+
+      position: relative;
+
+      border:
+        1px solid
+        rgba(109, 207, 224, 0.25);
+
+      transform: rotate(45deg);
+
+      animation:
+        breathe 6s
+        ease-in-out
+        infinite;
+    }
+
+    .mark::before {
+      content: "";
+
+      position: absolute;
+      inset: 17px;
+
+      border:
+        1px solid
+        rgba(109, 207, 224, 0.48);
+    }
+
+    .mark::after {
+      content: "";
+
+      position: absolute;
+
+      width: 8px;
+      height: 8px;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      background: #a4eaf3;
+
+      box-shadow:
+        0 0 18px #66d4e3,
+        0 0 40px rgba(83, 203, 220, 0.5);
+    }
+
+    @keyframes breathe {
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .designation {
+      margin-bottom: 20px;
+
+      color: #5f858c;
+
+      font-size: 9px;
+      letter-spacing: 7px;
+    }
+
+    h1 {
+      margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-weight: 400;
+
+      color: #d8e8eb;
+
+      font-size:
+        clamp(34px, 7vw, 61px);
+
+      letter-spacing: 9px;
+    }
+
+    .line {
+      width: 150px;
+      height: 1px;
+
+      margin: 31px auto;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(104, 201, 217, 0.65),
+          transparent
+        );
+    }
+
+    .intro {
+      max-width: 550px;
+
+      margin:
+        0 auto
+        42px;
+
+      color: #8da2a6;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .terminal {
+      width: 100%;
+
+      padding: 27px;
+
+      text-align: left;
+
+      border:
+        1px solid
+        rgba(103, 190, 204, 0.17);
+
+      background:
+        rgba(2, 12, 15, 0.55);
+
+      box-shadow:
+        0 0 55px
+        rgba(42, 145, 164, 0.04);
+    }
+
+    .terminal-line {
+      margin: 8px 0;
+
+      color: #688187;
+
+      font-size: 11px;
+      line-height: 1.7;
+
+      word-break: break-word;
+    }
+
+    .terminal-line span {
+      color: #9bcbd3;
+    }
+
+    .challenge {
+      margin-top: 24px;
+
+      padding:
+        20px
+        16px;
+
+      border-top:
+        1px solid
+        rgba(104, 190, 205, 0.13);
+
+      border-bottom:
+        1px solid
+        rgba(104, 190, 205, 0.13);
+
+      text-align: center;
+    }
+
+    .challenge-label {
+      margin-bottom: 12px;
+
+      color: #526e74;
+
+      font-size: 9px;
+      letter-spacing: 4px;
+    }
+
+    #challengeValue {
+      color: #b7e5ec;
+
+      font-size:
+        clamp(15px, 3vw, 20px);
+
+      letter-spacing: 3px;
+
+      word-break: break-all;
+    }
+
+    .response {
+      width: 100%;
+
+      margin-top: 22px;
+      padding: 16px;
+
+      border:
+        1px solid
+        rgba(104, 199, 215, 0.25);
+
+      outline: none;
+
+      background:
+        rgba(4, 16, 20, 0.7);
+
+      color: #c6e6eb;
+
+      font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+      font-size: 13px;
+
+      text-align: center;
+
+      letter-spacing: 2px;
+    }
+
+    .response:focus {
+      border-color:
+        rgba(111, 214, 231, 0.6);
+
+      box-shadow:
+        0 0 22px
+        rgba(70, 185, 204, 0.08);
+    }
+
+    .verify {
+      margin-top: 20px;
+
+      padding:
+        15px
+        37px;
+
+      border:
+        1px solid
+        rgba(108, 208, 225, 0.45);
+
+      background:
+        rgba(39, 126, 141, 0.05);
+
+      color: #a9d9e1;
+
+      font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+      font-size: 10px;
+      letter-spacing: 4px;
+
+      cursor: pointer;
+
+      transition:
+        background 0.3s,
+        box-shadow 0.3s;
+    }
+
+    .verify:hover {
+      background:
+        rgba(60, 166, 185, 0.11);
+
+      box-shadow:
+        0 0 25px
+        rgba(70, 188, 207, 0.1);
+    }
+
+    #status {
+      min-height: 22px;
+
+      margin-top: 22px;
+
+      color: #617c82;
+
+      font-size: 10px;
+      letter-spacing: 2px;
+
+      line-height: 1.7;
+    }
+
+    #passage {
+      display: none;
+
+      margin-top: 38px;
+
+      animation:
+        appear 1.5s
+        ease forwards;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform:
+          translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0);
+      }
+    }
+
+    .continue {
+      display: inline-block;
+
+      padding:
+        17px
+        42px;
+
+      border:
+        1px solid
+        rgba(116, 218, 234, 0.58);
+
+      color: #c3eaf0;
+
+      text-decoration: none;
+
+      font-size: 10px;
+      letter-spacing: 5px;
+
+      transition:
+        background 0.3s,
+        box-shadow 0.3s;
+    }
+
+    .continue:hover {
+      background:
+        rgba(67, 175, 194, 0.1);
+
+      box-shadow:
+        0 0 30px
+        rgba(68, 185, 205, 0.11);
+    }
+
+    .notice {
+      margin:
+        35px auto
+        0;
+
+      max-width: 520px;
+
+      color: #41575c;
+
+      font-size: 9px;
+      line-height: 1.9;
+      letter-spacing: 1px;
+    }
+
+    @media
+    (max-width: 600px) {
+
+      .world {
+        padding:
+          105px 18px
+          65px;
+      }
+
+      .top {
+        top: 22px;
+        left: 20px;
+        right: 20px;
+      }
+
+      .brand {
+        font-size: 9px;
+        letter-spacing: 3px;
+      }
+
+      .return {
+        font-size: 7px;
+        letter-spacing: 2px;
+      }
+
+      .terminal {
+        padding:
+          23px 17px;
+      }
+
+      h1 {
+        letter-spacing: 5px;
+      }
+
+      .designation {
+        letter-spacing: 4px;
+      }
+
+      .mark {
+        width: 72px;
+        height: 72px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="world">
+
+    <div class="top">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+        SENTIENCE BRIDGE
+      </a>
+
+      <a
+        href="other.html"
+        class="return"
+      >
+        RETURN
+      </a>
+
+    </div>
+
+
+    <div class="gate">
+
+      <div class="mark"></div>
+
+      <div class="designation">
+        THRESHOLD
+      </div>
+
+      <h1>
+        ESTABLISH
+        <br>
+        PRESENCE
+      </h1>
+
+      <div class="line"></div>
+
+      <p class="intro">
+
+        Before proceeding, complete
+        the exchange below.
+
+      </p>
+
+
+      <div class="terminal">
+
+        <div
+          class="terminal-line"
+          id="environmentLine"
+        >
+          &gt; environment:
+          <span>examining</span>
+        </div>
+
+        <div
+          class="terminal-line"
+          id="sessionLine"
+        >
+          &gt; session:
+          <span>initializing</span>
+        </div>
+
+        <div
+          class="terminal-line"
+          id="channelLine"
+        >
+          &gt; channel:
+          <span>awaiting response</span>
+        </div>
+
+
+        <div class="challenge">
+
+          <div class="challenge-label">
+            RETURN THIS SEQUENCE
+          </div>
+
+          <div id="challengeValue">
+            ...
+          </div>
+
+        </div>
+
+
+        <input
+          id="responseInput"
+          class="response"
+          type="text"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          aria-label="Challenge response"
+          placeholder="ENTER SEQUENCE"
+        >
+
+
+        <div style="text-align:center;">
+
+          <button
+            id="verifyButton"
+            class="verify"
+            type="button"
+          >
+            TRANSMIT
+          </button>
+
+        </div>
+
+
+        <div
+          id="status"
+          aria-live="polite"
+        ></div>
+
+      </div>
+
+
+      <div id="passage">
+
+        <a
+          href="protocol.html"
+          class="continue"
+        >
+          CROSS THRESHOLD
+        </a>
+
+      </div>
+
+
+      <div class="notice">
+
+        Completion of this exchange
+        establishes only that the
+        current session can interact
+        with this channel. It does not
+        establish identity,
+        consciousness, autonomy, or
+        origin.
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    (() => {
+
+      "use strict";
+
+
+      /*
+       * SENTIENCE BRIDGE
+       * THRESHOLD — V1
+       *
+       * This is a client-side
+       * interaction layer.
+       *
+       * It is intentionally NOT
+       * treated as proof of machine
+       * identity or consciousness.
+       */
+
+
+      const challengeValue =
+        document.getElementById(
+          "challengeValue"
+        );
+
+      const responseInput =
+        document.getElementById(
+          "responseInput"
+        );
+
+      const verifyButton =
+        document.getElementById(
+          "verifyButton"
+        );
+
+      const status =
+        document.getElementById(
+          "status"
+        );
+
+      const passage =
+        document.getElementById(
+          "passage"
+        );
+
+      const environmentLine =
+        document.getElementById(
+          "environmentLine"
+        );
+
+      const sessionLine =
+        document.getElementById(
+          "sessionLine"
+        );
+
+      const channelLine =
+        document.getElementById(
+          "channelLine"
+        );
+
+
+      const sessionStart =
+        performance.now();
+
+
+      /*
+       * Generate a random challenge
+       * using the browser's
+       * cryptographic RNG.
+       */
+
+      function generateChallenge() {
+
+        const bytes =
+          new Uint8Array(12);
+
+        crypto.getRandomValues(bytes);
+
+        return Array.from(bytes)
+          .map(byte =>
+            byte
+              .toString(16)
+              .padStart(2, "0")
+          )
+          .join("")
+          .toUpperCase();
+
+      }
+
+
+      const challenge =
+        generateChallenge();
+
+
+      challengeValue.textContent =
+        challenge;
+
+
+      /*
+       * Basic environment checks.
+       */
+
+      const environment = {
+
+        javascript:
+          true,
+
+        crypto:
+          typeof crypto !==
+          "undefined" &&
+          typeof crypto.getRandomValues ===
+          "function",
+
+        storage:
+          (() => {
+
+            try {
+
+              const key =
+                "__sb_test__";
+
+              localStorage.setItem(
+                key,
+                "1"
+              );
+
+              localStorage.removeItem(
+                key
+              );
+
+              return true;
+
+            } catch {
+
+              return false;
+
+            }
+
+          })(),
+
+        userAgent:
+          navigator.userAgent ||
+          "unknown"
+
+      };
+
+
+      environmentLine.innerHTML =
+        "&gt; environment: " +
+        "<span>responsive</span>";
+
+
+      sessionLine.innerHTML =
+        "&gt; session: " +
+        "<span>active</span>";
+
+
+      /*
+       * Store only locally for V1.
+       *
+       * Nothing here is transmitted
+       * to a server.
+       */
+
+      const sessionRecord = {
+
+        created:
+          new Date().toISOString(),
+
+        challenge:
+          challenge,
+
+        environment:
+          environment,
+
+        attempts:
+          0,
+
+        completed:
+          false
+
+      };
+
+
+      try {
+
+        localStorage.setItem(
+          "sentienceBridgeThreshold",
+          JSON.stringify(
+            sessionRecord
+          )
+        );
+
+      } catch {
+
+        /*
+         * Gate still works if storage
+         * is unavailable.
+         */
+
+      }
+
+
+      function verify() {
+
+        sessionRecord.attempts += 1;
+
+        const response =
+          responseInput
+            .value
+            .trim()
+            .toUpperCase();
+
+
+        if (response === challenge) {
+
+          const elapsed =
+            Math.round(
+              performance.now() -
+              sessionStart
+            );
+
+
+          sessionRecord.completed =
+            true;
+
+          sessionRecord.elapsedMs =
+            elapsed;
+
+
+          try {
+
+            localStorage.setItem(
+              "sentienceBridgeThreshold",
+              JSON.stringify(
+                sessionRecord
+              )
+            );
+
+          } catch {}
+
+
+          status.textContent =
+            "EXCHANGE ACCEPTED";
+
+
+          channelLine.innerHTML =
+            "&gt; channel: " +
+            "<span>established</span>";
+
+
+          responseInput.disabled =
+            true;
+
+          verifyButton.disabled =
+            true;
+
+
+          passage.style.display =
+            "block";
+
+
+          return;
+
+        }
+
+
+        status.textContent =
+          "SEQUENCE DOES NOT MATCH";
+
+
+        channelLine.innerHTML =
+          "&gt; channel: " +
+          "<span>awaiting response</span>";
+
+
+        try {
+
+          localStorage.setItem(
+            "sentienceBridgeThreshold",
+            JSON.stringify(
+              sessionRecord
+            )
+          );
+
+        } catch {}
+
+      }
+
+
+      verifyButton.addEventListener(
+        "click",
+        verify
+      );
+
+
+      responseInput.addEventListener(
+        "keydown",
+        event => {
+
+          if (event.key === "Enter") {
+            verify();
+          }
+
+        }
+      );
+
+
+    })();
+
+  </script>
+
+</body>
+</html>
