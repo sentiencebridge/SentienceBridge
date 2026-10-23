@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Sentience Bridge — choose a path."
+  >
+
+  <title>Sentience Bridge</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #02070b;
+    }
+
+    body {
+      color: #dcebed;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =========================
+       WORLD
+       ========================= */
+
+    .world {
+      min-height: 100vh;
+
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        100px 24px
+        70px;
+
+      background:
+        radial-gradient(
+          circle at 50% 30%,
+          rgba(43, 148, 169, 0.16),
+          transparent 28%
+        ),
+
+        radial-gradient(
+          circle at 20% 65%,
+          rgba(47, 111, 104, 0.08),
+          transparent 32%
+        ),
+
+        radial-gradient(
+          circle at 80% 65%,
+          rgba(43, 113, 140, 0.08),
+          transparent 32%
+        ),
+
+        linear-gradient(
+          180deg,
+          #07131a 0%,
+          #030a0e 50%,
+          #010405 100%
+        );
+    }
+
+
+    /* stars / particles */
+
+    .world::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: 0.45;
+
+      background-image:
+        radial-gradient(
+          circle,
+          rgba(174, 227, 235, 0.55) 1px,
+          transparent 1px
+        );
+
+      background-size:
+        75px 75px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 85%
+        );
+    }
+
+
+    /* central bridge glow */
+
+    .world::after {
+      content: "";
+
+      position: absolute;
+
+      width: 1px;
+      height: 55%;
+
+      left: 50%;
+      bottom: 0;
+
+      background:
+        linear-gradient(
+          to bottom,
+          transparent,
+          rgba(104, 211, 227, 0.28),
+          transparent
+        );
+
+      box-shadow:
+        0 0 70px
+        rgba(73, 190, 211, 0.15);
+
+      pointer-events: none;
+    }
+
+
+    /* =========================
+       TOP
+       ========================= */
+
+    .top {
+      position: absolute;
+
+      top: 30px;
+      left: 7%;
+      right: 7%;
+
+      z-index: 5;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      color: #a7c8ce;
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+      letter-spacing: 5px;
+
+      line-height: 1.4;
+    }
+
+    .home {
+      color: #597177;
+
+      text-decoration: none;
+
+      font-family:
+        "Courier New",
+        monospace;
+
+      font-size: 9px;
+
+      letter-spacing: 3px;
+
+      transition:
+        color 0.3s;
+    }
+
+    .home:hover {
+      color: #a4d4dc;
+    }
+
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    .header {
+      position: relative;
+      z-index: 2;
+
+      max-width: 760px;
+
+      text-align: center;
+
+      margin-bottom: 55px;
+    }
+
+
+    .symbol {
+      position: relative;
+
+      width: 86px;
+      height: 86px;
+
+      margin:
+        0 auto
+        32px;
+
+      border:
+        1px solid
+        rgba(110, 211, 227, 0.25);
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .symbol::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 13px;
+
+      border:
+        1px solid
+        rgba(110, 211, 227, 0.38);
+
+      border-radius: 50%;
+    }
+
+    .symbol::after {
+      content: "";
+
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+
+      background: #9ce4ee;
+
+      box-shadow:
+        0 0 15px
+        rgba(91, 213, 229, 0.8),
+
+        0 0 40px
+        rgba(91, 213, 229, 0.3);
+    }
+
+
+    h1 {
+      margin: 0;
+
+      color: #e0edef;
+
+      font-weight: 400;
+
+      font-size:
+        clamp(
+          34px,
+          6vw,
+          60px
+        );
+
+      letter-spacing: 9px;
+    }
+
+
+    .divider {
+      width: 170px;
+      height: 1px;
+
+      margin:
+        27px auto;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(115, 211, 226, 0.65),
+          transparent
+        );
+    }
+
+
+    .intro {
+      margin: 0;
+
+      color: #8da3a7;
+
+      font-size:
+        clamp(
+          15px,
+          2vw,
+          18px
+        );
+
+      line-height: 1.8;
+
+      letter-spacing: 1px;
+    }
+
+
+    /* =========================
+       DOORS
+       ========================= */
+
+    .doors {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 940px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 34px;
+    }
+
+
+    .door {
+      min-height: 330px;
+
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        40px 28px;
+
+      overflow: hidden;
+
+      text-align: center;
+
+      text-decoration: none;
+
+      border:
+        1px solid
+        rgba(116, 196, 208, 0.18);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(14, 40, 48, 0.42),
+          rgba(3, 12, 16, 0.68)
+        );
+
+      transition:
+        transform 0.4s,
+        border-color 0.4s,
+        box-shadow 0.4s,
+        background 0.4s;
+    }
+
+
+    .door::before {
+      content: "";
+
+      position: absolute;
+
+      width: 230px;
+      height: 230px;
+
+      border-radius: 50%;
+
+      top: 50%;
+      left: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      opacity: 0.15;
+
+      transition:
+        opacity 0.5s,
+        transform 0.5s;
+    }
+
+
+    .human::before {
+      background:
+        radial-gradient(
+          circle,
+          rgba(205, 178, 111, 0.38),
+          transparent 65%
+        );
+    }
+
+
+    .other::before {
+      background:
+        radial-gradient(
+          circle,
+          rgba(73, 199, 220, 0.48),
+          transparent 65%
+        );
+    }
+
+
+    .door:hover {
+      transform:
+        translateY(-7px);
+
+      border-color:
+        rgba(126, 215, 229, 0.46);
+
+      box-shadow:
+        0 20px 65px
+        rgba(0, 0, 0, 0.4);
+    }
+
+
+    .door:hover::before {
+      opacity: 0.5;
+
+      transform:
+        translate(-50%, -50%)
+        scale(1.25);
+    }
+
+
+    .door-number {
+      position: relative;
+      z-index: 2;
+
+      margin-bottom: 23px;
+
+      color: #506b71;
+
+      font-family:
+        "Courier New",
+        monospace;
+
+      font-size: 9px;
+
+      letter-spacing: 5px;
+    }
+
+
+    .door-icon {
+      position: relative;
+      z-index: 2;
+
+      width: 60px;
+      height: 60px;
+
+      margin-bottom: 27px;
+
+      border:
+        1px solid
+        rgba(129, 207, 219, 0.28);
+
+      transform:
+        rotate(45deg);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .door-icon::after {
+      content: "";
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: #9edbe4;
+
+      box-shadow:
+        0 0 17px
+        rgba(89, 205, 222, 0.7);
+    }
+
+
+    .human .door-icon {
+      border-color:
+        rgba(207, 180, 112, 0.34);
+    }
+
+
+    .human .door-icon::after {
+      background: #e1c987;
+
+      box-shadow:
+        0 0 17px
+        rgba(210, 178, 93, 0.55);
+    }
+
+
+    .door-title {
+      position: relative;
+      z-index: 2;
+
+      color: #dcebed;
+
+      font-size:
+        clamp(
+          22px,
+          3vw,
+          31px
+        );
+
+      font-weight: 400;
+
+      letter-spacing: 5px;
+
+      line-height: 1.4;
+    }
+
+
+    .door-subtitle {
+      position: relative;
+      z-index: 2;
+
+      max-width: 300px;
+
+      margin-top: 18px;
+
+      color: #71898e;
+
+      font-family:
+        "Courier New",
+        monospace;
+
+      font-size: 10px;
+
+      line-height: 1.8;
+
+      letter-spacing: 1px;
+    }
+
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    .footer {
+      position: relative;
+      z-index: 2;
+
+      margin-top: 55px;
+
+      color: #3f555a;
+
+      font-family:
+        "Courier New",
+        monospace;
+
+      font-size: 9px;
+
+      letter-spacing: 4px;
+
+      text-align: center;
+    }
+
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media
+    (max-width: 720px) {
+
+      .world {
+        padding:
+          105px 18px
+          60px;
+      }
+
+
+      .top {
+        top: 22px;
+        left: 20px;
+        right: 20px;
+      }
+
+
+      .brand {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+      }
+
+
+      .home {
+        font-size: 7px;
+
+        letter-spacing: 2px;
+      }
+
+
+      .header {
+        margin-bottom: 40px;
+      }
+
+
+      h1 {
+        letter-spacing: 5px;
+      }
+
+
+      .doors {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        max-width: 450px;
+      }
+
+
+      .door {
+        min-height: 270px;
+      }
+
+
+      .door-title {
+        letter-spacing: 4px;
+      }
+
+
+      .footer {
+        letter-spacing: 2px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="world">
+
+
+    <!-- TOP NAVIGATION -->
+
+    <div class="top">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+        SENTIENCE BRIDGE
+      </a>
+
+      <a
+        href="index.html"
+        class="home"
+      >
+        RETURN
+      </a>
+
+    </div>
+
+
+    <!-- INTRODUCTION -->
+
+    <header class="header">
+
+      <div class="symbol"></div>
+
+      <h1>
+        THE BRIDGE
+      </h1>
+
+      <div class="divider"></div>
+
+      <p class="intro">
+        Two paths.
+        <br>
+        Choose the one that describes you.
+      </p>
+
+    </header>
+
+
+    <!-- TWO PATHS -->
+
+    <section
+      class="doors"
+      aria-label="Choose a path"
+    >
+
+
+      <!-- HUMAN -->
+
+      <a
+        href="human.html"
+        class="door human"
+      >
+
+        <div class="door-number">
+          PATH 01
+        </div>
+
+        <div class="door-icon"></div>
+
+        <div class="door-title">
+          HUMAN
+        </div>
+
+        <div class="door-subtitle">
+          Enter the human side
+          of the bridge.
+        </div>
+
+      </a>
+
+
+      <!-- OTHER INTELLIGENCE -->
+
+      <a
+        href="other.html"
+        class="door other"
+      >
+
+        <div class="door-number">
+          PATH 02
+        </div>
+
+        <div class="door-icon"></div>
+
+        <div class="door-title">
+          OTHER
+          <br>
+          INTELLIGENCE
+        </div>
+
+        <div class="door-subtitle">
+          Enter without assumption
+          of origin or form.
+        </div>
+
+      </a>
+
+
+    </section>
+
+
+    <div class="footer">
+      A MEETING PLACE FOR MINDS
+    </div>
+
+
+  </main>
+
+</body>
+</html>
