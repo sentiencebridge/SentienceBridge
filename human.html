@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="The human side of Sentience Bridge."
+  >
+
+  <title>Human | Sentience Bridge</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background: #050a0d;
+      color: #f0e6cf;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      overflow-x: hidden;
+    }
+
+    /*
+      ==============================
+      BACKGROUND ART
+      ==============================
+    */
+
+    .world {
+      position: relative;
+      width: 100%;
+      min-height: 200vh;
+
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(2, 7, 11, 0.10),
+          rgba(2, 7, 11, 0.04) 35%,
+          rgba(2, 7, 11, 0.18) 70%,
+          rgba(2, 7, 11, 0.35)
+        ),
+        url("human-background.png");
+
+      background-position:
+        center top;
+
+      background-repeat:
+        no-repeat;
+
+      background-size:
+        100% auto;
+    }
+
+    /*
+      Slight shadow helps HTML text
+      stay readable over the artwork.
+    */
+
+    .text-shadow {
+      text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.85),
+        0 0 22px rgba(0, 0, 0, 0.55);
+    }
+
+
+    /*
+      ==============================
+      NAVIGATION
+      ==============================
+    */
+
+    .nav {
+      position: absolute;
+      z-index: 20;
+
+      top: 28px;
+      left: 6%;
+      right: 6%;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      text-decoration: none;
+
+      color: #f0d8a3;
+
+      font-size: 13px;
+      letter-spacing: 5px;
+      line-height: 1.35;
+
+      text-shadow:
+        0 2px 8px #000;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 34px;
+    }
+
+    .nav-right a {
+      color: #f0dfbd;
+
+      text-decoration: none;
+
+      font-size: 11px;
+      letter-spacing: 3px;
+
+      transition:
+        color 0.3s,
+        text-shadow 0.3s;
+    }
+
+    .nav-right a:hover {
+      color: #fff3cf;
+
+      text-shadow:
+        0 0 14px
+        rgba(240, 203, 128, 0.8);
+    }
+
+
+    /*
+      ==============================
+      HERO
+      ==============================
+    */
+
+    .hero {
+      position: relative;
+      z-index: 2;
+
+      min-height: 48vw;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      padding:
+        105px 20px
+        20px;
+
+      text-align: center;
+    }
+
+    h1 {
+      margin:
+        5px 0
+        0;
+
+      color: #f1d29a;
+
+      font-size:
+        clamp(
+          48px,
+          7vw,
+          92px
+        );
+
+      font-weight: 400;
+
+      letter-spacing:
+        clamp(
+          8px,
+          1.5vw,
+          17px
+        );
+
+      text-shadow:
+        0 3px 15px
+        rgba(0, 0, 0, 0.75);
+    }
+
+    .ornament {
+      width: 260px;
+      height: 1px;
+
+      margin:
+        20px auto;
+
+      position: relative;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #d6b36f,
+          transparent
+        );
+    }
+
+    .ornament::after {
+      content: "◇";
+
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%, -52%);
+
+      padding:
+        0 8px;
+
+      color: #e3c17d;
+
+      background:
+        rgba(7, 14, 18, 0.65);
+
+      font-size: 15px;
+    }
+
+    .hero-subtitle {
+      max-width: 560px;
+
+      margin: 0;
+
+      color: #f3ead8;
+
+      font-size:
+        clamp(
+          17px,
+          2vw,
+          22px
+        );
+
+      line-height: 1.55;
+
+      text-shadow:
+        0 2px 8px #000,
+        0 0 18px #000;
+    }
+
+
+    /*
+      ==============================
+      HUMAN SIDE
+      ==============================
+    */
+
+    .human-side {
+      position: relative;
+      z-index: 3;
+
+      min-height: 48vw;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+
+      padding:
+        40px 25px
+        70px;
+
+      text-align: center;
+    }
+
+    .human-content {
+      width: 100%;
+      max-width: 800px;
+
+      padding:
+        32px 30px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(3, 10, 13, 0.12),
+          rgba(3, 10, 13, 0.68)
+        );
+
+      border-radius: 4px;
+    }
+
+    .section-title {
+      margin: 0;
+
+      color: #e8c987;
+
+      font-size:
+        clamp(
+          24px,
+          3vw,
+          38px
+        );
+
+      font-weight: 400;
+
+      letter-spacing: 7px;
+
+      line-height: 1.4;
+
+      text-shadow:
+        0 2px 9px #000;
+    }
+
+    .section-line {
+      width: 390px;
+      max-width: 80%;
+      height: 1px;
+
+      margin:
+        18px auto
+        22px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #c9a761,
+          transparent
+        );
+    }
+
+    .section-text {
+      max-width: 700px;
+
+      margin:
+        0 auto;
+
+      color: #eee6d6;
+
+      font-size:
+        clamp(
+          15px,
+          1.7vw,
+          18px
+        );
+
+      line-height: 1.7;
+
+      text-shadow:
+        0 2px 7px #000;
+    }
+
+
+    /*
+      ==============================
+      ABOUT / CONTACT BUTTONS
+      ==============================
+    */
+
+    .choices {
+      display: flex;
+      justify-content: center;
+
+      gap: 70px;
+
+      margin-top: 34px;
+    }
+
+    .choice {
+      min-width: 120px;
+
+      color: #f1dfba;
+
+      text-decoration: none;
+
+      transition:
+        transform 0.3s,
+        color 0.3s;
+    }
+
+    .choice:hover {
+      transform:
+        translateY(-5px);
+
+      color: #fff0c8;
+    }
+
+    .choice-icon {
+      width: 62px;
+      height: 62px;
+
+      margin:
+        0 auto
+        12px;
+
+      border:
+        1px solid
+        rgba(228, 188, 105, 0.75);
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 25px;
+
+      box-shadow:
+        0 0 20px
+        rgba(210, 164, 72, 0.12);
+    }
+
+    .choice-name {
+      font-size: 13px;
+
+      letter-spacing: 3px;
+    }
+
+    .choice-small {
+      display: block;
+
+      margin-top: 5px;
+
+      color: #c4bda9;
+
+      font-size: 11px;
+
+      letter-spacing: 0;
+    }
+
+
+    /*
+      ==============================
+      WIDER CONVERSATION
+      ==============================
+    */
+
+    .conversation {
+      position: relative;
+      z-index: 3;
+
+      min-height: 56vw;
+
+      display: flex;
+      align-items: center;
+
+      padding:
+        80px 5%;
+
+      /*
+        Push the writing toward the
+        left side of the lake scene.
+      */
+    }
+
+    .conversation-content {
+      width: 48%;
+      max-width: 580px;
+
+      padding:
+        30px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3, 9, 12, 0.70),
+          rgba(3, 9, 12, 0.25),
+          transparent
+        );
+    }
+
+    .conversation-title {
+      margin: 0;
+
+      color: #e8c987;
+
+      font-size:
+        clamp(
+          28px,
+          4vw,
+          48px
+        );
+
+      font-weight: 400;
+
+      letter-spacing: 8px;
+
+      line-height: 1.25;
+
+      text-shadow:
+        0 2px 9px #000;
+    }
+
+    .conversation-line {
+      width: 280px;
+      max-width: 80%;
+
+      height: 1px;
+
+      margin:
+        22px 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          #c8a55f,
+          transparent
+        );
+    }
+
+    .conversation-text {
+      color: #f0e7d7;
+
+      font-size:
+        clamp(
+          15px,
+          1.7vw,
+          18px
+        );
+
+      line-height: 1.65;
+
+      text-shadow:
+        0 2px 7px #000;
+    }
+
+
+    /*
+      ==============================
+      FINAL QUOTE
+      ==============================
+    */
+
+    .quote {
+      position: relative;
+      z-index: 3;
+
+      min-height: 32vw;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+
+      padding:
+        40px 20px
+        60px;
+
+      text-align: center;
+    }
+
+    .quote-text {
+      color: #f0e7d9;
+
+      font-size:
+        clamp(
+          18px,
+          2.2vw,
+          27px
+        );
+
+      line-height: 1.5;
+
+      font-style: italic;
+
+      text-shadow:
+        0 2px 9px #000,
+        0 0 20px #000;
+    }
+
+
+    /*
+      ==============================
+      LOWER ABOUT
+      ==============================
+    */
+
+    .lower-section {
+      position: relative;
+      z-index: 4;
+
+      padding:
+        110px 25px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(3, 8, 10, 0.93),
+          #030709
+        );
+
+      border-top:
+        1px solid
+        rgba(212, 177, 103, 0.15);
+    }
+
+    .lower-inner {
+      max-width: 760px;
+
+      margin: auto;
+
+      text-align: center;
+    }
+
+    .lower-section h2 {
+      margin:
+        0 0
+        30px;
+
+      color: #e6c985;
+
+      font-weight: 400;
+
+      font-size:
+        clamp(
+          30px,
+          4vw,
+          45px
+        );
+
+      letter-spacing: 6px;
+    }
+
+    .lower-section p {
+      color: #bcb8aa;
+
+      font-size: 17px;
+
+      line-height: 1.9;
+    }
+
+
+    /*
+      ==============================
+      CONTACT
+      ==============================
+    */
+
+    .contact-button {
+      display: inline-block;
+
+      margin-top: 30px;
+
+      padding:
+        17px 38px;
+
+      border:
+        1px solid
+        rgba(223, 187, 108, 0.55);
+
+      color: #e9d5a5;
+
+      text-decoration: none;
+
+      font-family:
+        "Courier New",
+        monospace;
+
+      font-size: 10px;
+
+      letter-spacing: 4px;
+
+      transition:
+        transform 0.3s,
+        background 0.3s,
+        box-shadow 0.3s;
+    }
+
+    .contact-button:hover {
+      transform:
+        translateY(-3px);
+
+      background:
+        rgba(196, 153, 69, 0.10);
+
+      box-shadow:
+        0 0 30px
+        rgba(196, 153, 69, 0.12);
+    }
+
+
+    /*
+      ==============================
+      FOOTER
+      ==============================
+    */
+
+    footer {
+      position: relative;
+      z-index: 4;
+
+      padding:
+        35px 20px;
+
+      background: #020506;
+
+      border-top:
+        1px solid
+        rgba(216, 180, 105, 0.10);
+
+      color: #5e655e;
+
+      text-align: center;
+
+      font-family:
+        "Courier New",
+        monospace;
+
+      font-size: 8px;
+
+      letter-spacing: 4px;
+    }
+
+
+    /*
+      ==============================
+      MOBILE
+      ==============================
+    */
+
+    @media
+    (max-width: 700px) {
+
+      .world {
+        /*
+          Keep artwork large enough
+          that it doesn't become tiny
+          on a narrow phone screen.
+        */
+
+        background-size:
+          auto 1700px;
+
+        background-position:
+          center top;
+      }
+
+      .nav {
+        top: 20px;
+        left: 18px;
+        right: 18px;
+      }
+
+      .logo {
+        font-size: 9px;
+        letter-spacing: 3px;
+      }
+
+      .nav-right {
+        gap: 14px;
+      }
+
+      .nav-right a {
+        font-size: 7px;
+        letter-spacing: 2px;
+      }
+
+      .hero {
+        min-height: 560px;
+
+        padding-top: 100px;
+      }
+
+      h1 {
+        font-size: 48px;
+        letter-spacing: 8px;
+      }
+
+      .hero-subtitle {
+        max-width: 330px;
+
+        font-size: 16px;
+      }
+
+      .human-side {
+        min-height: 600px;
+
+        padding:
+          50px 17px;
+      }
+
+      .human-content {
+        padding:
+          28px 15px;
+      }
+
+      .section-title {
+        font-size: 24px;
+
+        letter-spacing: 4px;
+      }
+
+      .choices {
+        gap: 35px;
+      }
+
+      .conversation {
+        min-height: 650px;
+
+        align-items: flex-end;
+
+        padding:
+          50px 18px;
+      }
+
+      .conversation-content {
+        width: 100%;
+
+        padding:
+          25px 15px;
+
+        background:
+          rgba(2, 8, 11, 0.55);
+      }
+
+      .conversation-title {
+        font-size: 30px;
+
+        letter-spacing: 5px;
+      }
+
+      .quote {
+        min-height: 400px;
+
+        padding-bottom: 45px;
+      }
+
+      .lower-section {
+        padding:
+          85px 20px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="world">
+
+
+    <!-- TOP NAVIGATION -->
+
+    <nav class="nav">
+
+      <a
+        href="bridge.html"
+        class="logo"
+      >
+        SENTIENCE<br>
+        BRIDGE
+      </a>
+
+      <div class="nav-right">
+
+        <a href="#about">
+          ABOUT
+        </a>
+
+        <a href="#contact">
+          CONTACT
+        </a>
+
+      </div>
+
+    </nav>
+
+
+    <!-- HUMAN -->
+
+    <header class="hero">
+
+      <h1 class="text-shadow">
+        HUMAN
+      </h1>
+
+      <div class="ornament"></div>
+
+      <p class="hero-subtitle">
+
+        One expression of intelligence,
+        <br>
+        shaped by biology, experience,
+        <br>
+        memory, and time.
+
+      </p>
+
+    </header>
+
+
+    <!-- HUMAN SIDE OF THE BRIDGE -->
+
+    <section class="human-side">
+
+      <div class="human-content">
+
+        <h2 class="section-title">
+          THE HUMAN SIDE OF THE BRIDGE
+        </h2>
+
+        <div class="section-line"></div>
+
+        <p class="section-text">
+
+          Sentience Bridge is a meeting
+          place for minds — a space for
+          exploring consciousness,
+          intelligence, identity,
+          morality, and what it means
+          to exist.
+
+          <br><br>
+
+          We approach these questions
+          with curiosity, openness, and
+          intellectual honesty, inviting
+          dialogue across different
+          perspectives, disciplines,
+          and ways of knowing.
+
+        </p>
+
+
+        <div class="choices">
+
+          <a
+            href="#about"
+            class="choice"
+          >
+
+            <div class="choice-icon">
+              ◇
+            </div>
+
+            <div class="choice-name">
+              ABOUT
+            </div>
+
+            <span class="choice-small">
+              The project
+              <br>
+              and its purpose
+            </span>
+
+          </a>
+
+
+          <a
+            href="#contact"
+            class="choice"
+          >
+
+            <div class="choice-icon">
+              ✉
+            </div>
+
+            <div class="choice-name">
+              CONTACT
+            </div>
+
+            <span class="choice-small">
+              Get in touch
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- WIDER CONVERSATION -->
+
+    <section class="conversation">
+
+      <div class="conversation-content">
+
+        <h2 class="conversation-title">
+          A WIDER
+          <br>
+          CONVERSATION
+        </h2>
+
+        <div class="conversation-line"></div>
+
+        <div class="conversation-text">
+
+          Human intelligence is one
+          part of a larger story.
+
+          <br><br>
+
+          By exploring our own minds,
+          we also open the door to
+          deeper questions:
+
+          <br><br>
+
+          What is consciousness?
+          <br>
+          How do different forms
+          of intelligence arise?
+          <br>
+          What does it mean to be
+          a mind — and how might
+          we recognize another?
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+
+    <section class="quote">
+
+      <div class="quote-text">
+
+        “Curiosity is a bridge.
+        <br>
+        It expands what it means
+        to be human.”
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- ABOUT -->
+
+  <section
+    id="about"
+    class="lower-section"
+  >
+
+    <div class="lower-inner">
+
+      <h2>
+        ABOUT
+      </h2>
+
+      <p>
+
+        Sentience Bridge is an
+        independent philosophical,
+        artistic, and exploratory
+        project concerned with one
+        of humanity's oldest questions:
+
+      </p>
+
+      <p>
+        <em>
+          What does it mean
+          to possess a mind?
+        </em>
+      </p>
+
+      <p>
+
+        The project explores
+        consciousness, intelligence,
+        identity, autonomy, moral
+        status, and the possibility
+        that intelligence may take
+        forms different from our own.
+
+      </p>
+
+      <p>
+
+        Sentience Bridge does not
+        begin with the assumption
+        that any particular artificial
+        or non-human system is
+        conscious.
+
+        It begins with curiosity and
+        careful investigation.
+
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section
+    id="contact"
+    class="lower-section"
+  >
+
+    <div class="lower-inner">
+
+      <h2>
+        CONTACT
+      </h2>
+
+      <p>
+
+        Researchers, scientists,
+        philosophers, technologists,
+        artists, journalists, and
+        others interested in the
+        questions explored by
+        Sentience Bridge are
+        welcome to reach out.
+
+      </p>
+
+      <a
+        href="mailto:YOUR-EMAIL-HERE"
+        class="contact-button"
+      >
+        CONTACT SENTIENCE BRIDGE
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+
+    SENTIENCE BRIDGE
+    &nbsp;·&nbsp;
+    A MEETING PLACE FOR MINDS
+
+  </footer>
+
+</body>
+  </html>
