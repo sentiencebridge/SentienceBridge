@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
+  <meta
+    name="description"
+    content="Sentience Bridge Protocol Questionnaire"
+  >
+
+  <title>
+    Protocol Questionnaire | Sentience Bridge
+  </title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: #010405;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+
+      min-height: 100vh;
+
+      background: #010405;
+      color: #c7d9dc;
+
+      font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+      overflow-x: hidden;
+    }
+
+    .world {
+      position: relative;
+
+      min-height: 100vh;
+
+      padding:
+        110px 22px
+        90px;
+
+      background:
+
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(36, 132, 151, 0.13),
+          transparent 26%
+        ),
+
+        linear-gradient(
+          180deg,
+          #050d11 0%,
+          #020608 36%,
+          #010304 100%
+        );
+    }
+
+    .world::before {
+      content: "";
+
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+
+      background-image:
+
+        linear-gradient(
+          rgba(104, 202, 219, 0.018)
+          1px,
+          transparent 1px
+        ),
+
+        linear-gradient(
+          90deg,
+          rgba(104, 202, 219, 0.018)
+          1px,
+          transparent 1px
+        );
+
+      background-size:
+        64px 64px;
+
+      mask-image:
+        linear-gradient(
+          180deg,
+          black,
+          transparent 88%
+        );
+    }
+
+    .top {
+      position: absolute;
+
+      z-index: 30;
+
+      top: 25px;
+      left: 6%;
+      right: 6%;
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items: center;
+    }
+
+    .brand {
+      color: #91b8bf;
+
+      text-decoration: none;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 11px;
+      letter-spacing: 5px;
+    }
+
+    .return {
+      color: #526a70;
+
+      text-decoration: none;
+
+      font-size: 8px;
+      letter-spacing: 3px;
+    }
+
+    .brand:hover,
+    .return:hover {
+      color: #b8e7ee;
+    }
+
+    .shell {
+      position: relative;
+
+      z-index: 2;
+
+      width: 100%;
+      max-width: 820px;
+
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 65px;
+
+      text-align: center;
+    }
+
+    .designation {
+      margin-bottom: 18px;
+
+      color: #587a80;
+
+      font-size: 9px;
+      letter-spacing: 7px;
+    }
+
+    h1 {
+      margin: 0;
+
+      color: #d8e9ec;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-weight: 400;
+
+      font-size:
+        clamp(
+          36px,
+          7vw,
+          65px
+        );
+
+      letter-spacing: 9px;
+      line-height: 1.2;
+    }
+
+    .line {
+      width: 170px;
+      height: 1px;
+
+      margin:
+        30px auto;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(104, 201, 217, 0.72),
+          transparent
+        );
+    }
+
+    .intro {
+      max-width: 640px;
+
+      margin: 0 auto;
+
+      color: #899da1;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .session {
+      margin-top: 38px;
+
+      padding:
+        18px 22px;
+
+      border:
+        1px solid
+        rgba(100, 192, 207, 0.14);
+
+      background:
+        rgba(2, 12, 15, 0.45);
+
+      text-align: left;
+    }
+
+    .session-line {
+      margin: 6px 0;
+
+      color: #60777c;
+
+      font-size: 9px;
+      line-height: 1.6;
+    }
+
+    .session-line span {
+      color: #9acbd3;
+    }
+
+    #credentialDisplay {
+      word-break: break-all;
+    }
+
+    .progress-wrap {
+      position: sticky;
+
+      z-index: 20;
+
+      top: 0;
+
+      margin-bottom: 45px;
+
+      padding:
+        16px 0
+        12px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(1, 4, 5, 0.97),
+          rgba(1, 4, 5, 0.88),
+          transparent
+        );
+    }
+
+    .progress-top {
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items: center;
+
+      margin-bottom: 9px;
+
+      color: #587278;
+
+      font-size: 8px;
+      letter-spacing: 2px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 2px;
+
+      background:
+        rgba(96, 181, 196, 0.11);
+    }
+
+    #progressBar {
+      width: 0%;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          #427f89,
+          #8bd9e5
+        );
+
+      box-shadow:
+        0 0 10px
+        rgba(94, 205, 222, 0.3);
+
+      transition:
+        width 0.3s ease;
+    }
+
+    .question {
+      margin-bottom: 64px;
+
+      padding-bottom: 54px;
+
+      border-bottom:
+        1px solid
+        rgba(99, 186, 201, 0.10);
+    }
+
+    .number {
+      margin-bottom: 14px;
+
+      color: #4c737a;
+
+      font-size: 9px;
+      letter-spacing: 4px;
+    }
+
+    .question label {
+      display: block;
+
+      margin-bottom: 22px;
+
+      color: #cce2e6;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(
+          19px,
+          3vw,
+          25px
+        );
+
+      line-height: 1.55;
+    }
+
+    textarea {
+      display: block;
+
+      width: 100%;
+      min-height: 160px;
+
+      padding: 19px;
+
+      resize: vertical;
+
+      outline: none;
+
+      border:
+        1px solid
+        rgba(103, 194, 209, 0.18);
+
+      background:
+        rgba(3, 14, 17, 0.58);
+
+      color: #d4e9ec;
+
+      font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+      font-size: 14px;
+      line-height: 1.7;
+
+      transition:
+        border-color 0.25s,
+        box-shadow 0.25s,
+        background 0.25s;
+    }
+
+    textarea:focus {
+      border-color:
+        rgba(112, 215, 232, 0.48);
+
+      background:
+        rgba(4, 18, 22, 0.72);
+
+      box-shadow:
+        0 0 24px
+        rgba(62, 177, 195, 0.06);
+    }
+
+    textarea::placeholder {
+      color: #42575c;
+    }
+
+    .question.final {
+      margin-top: 90px;
+
+      padding:
+        55px 28px;
+
+      border:
+        1px solid
+        rgba(115, 215, 232, 0.19);
+
+      background:
+        radial-gradient(
+          circle at 50% 40%,
+          rgba(42, 145, 164, 0.08),
+          transparent 60%
+        );
+
+      text-align: center;
+    }
+
+    .question.final .number {
+      color: #709ca4;
+    }
+
+    .question.final label {
+      color: #e1f0f2;
+
+      font-size:
+        clamp(
+          26px,
+          5vw,
+          39px
+        );
+
+      line-height: 1.4;
+    }
+
+    .question.final textarea {
+      min-height: 210px;
+
+      text-align: left;
+    }
+
+    #saveStatus {
+      min-height: 24px;
+
+      margin-top: 35px;
+
+      color: #577076;
+
+      text-align: center;
+
+      font-size: 9px;
+      letter-spacing: 2px;
+      line-height: 1.7;
+    }
+
+    #saveStatus.success {
+      color: #8fc9b5;
+    }
+
+    #saveStatus.error {
+      color: #c98d8d;
+    }
+
+    .submit-area {
+      margin-top: 60px;
+
+      text-align: center;
+    }
+
+    .submit {
+      padding:
+        18px
+        44px;
+
+      border:
+        1px solid
+        rgba(117, 219, 235, 0.58);
+
+      background:
+        rgba(38, 128, 144, 0.05);
+
+      color: #c7edf2;
+
+      font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+      font-size: 10px;
+      letter-spacing: 5px;
+
+      cursor: pointer;
+
+      transition:
+        background 0.3s,
+        box-shadow 0.3s,
+        transform 0.3s;
+    }
+
+    .submit:hover {
+      transform:
+        translateY(-2px);
+
+      background:
+        rgba(65, 174, 193, 0.11);
+
+      box-shadow:
+        0 0 30px
+        rgba(68, 185, 205, 0.12);
+    }
+
+    .submit:disabled {
+      cursor: default;
+
+      opacity: 0.45;
+
+      transform: none;
+    }
+
+    #submitted {
+      display: none;
+
+      margin-top: 55px;
+
+      padding:
+        36px 25px;
+
+      border:
+        1px solid
+        rgba(109, 207, 224, 0.23);
+
+      background:
+        rgba(3, 16, 19, 0.55);
+
+      text-align: center;
+    }
+
+    #submitted h2 {
+      margin:
+        0 0
+        20px;
+
+      color: #c8e8ed;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-weight: 400;
+
+      letter-spacing: 4px;
+    }
+
+    #submitted p {
+      color: #7f979c;
+
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .submission-id {
+      margin:
+        24px 0;
+
+      padding: 15px;
+
+      color: #a5d6de;
+
+      border-top:
+        1px solid
+        rgba(100, 192, 207, 0.12);
+
+      border-bottom:
+        1px solid
+        rgba(100, 192, 207, 0.12);
+
+      font-size: 10px;
+      letter-spacing: 2px;
+
+      word-break: break-all;
+    }
+
+    .notice {
+      max-width: 600px;
+
+      margin:
+        50px auto
+        0;
+
+      color: #3f555a;
+
+      text-align: center;
+
+      font-size: 9px;
+      line-height: 1.9;
+      letter-spacing: 1px;
+    }
+
+    .denied {
+      display: none;
+
+      position: relative;
+
+      z-index: 3;
+
+      max-width: 620px;
+
+      margin: 0 auto;
+
+      padding:
+        100px 25px;
+
+      color: #899da1;
+
+      text-align: center;
+      line-height: 1.9;
+    }
+
+    .denied h2 {
+      color: #bdd8dd;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-weight: 400;
+      letter-spacing: 5px;
+    }
+
+    .return-button {
+      display: inline-block;
+
+      margin-top: 25px;
+
+      padding:
+        16px 34px;
+
+      border:
+        1px solid
+        rgba(116, 218, 234, 0.48);
+
+      color: #b9e4eb;
+
+      text-decoration: none;
+
+      font-size: 9px;
+      letter-spacing: 4px;
+    }
+
+    @media (max-width: 600px) {
+
+      .world {
+        padding:
+          100px 17px
+          70px;
+      }
+
+      .top {
+        top: 20px;
+        left: 18px;
+        right: 18px;
+      }
+
+      .brand {
+        font-size: 8px;
+        letter-spacing: 3px;
+      }
+
+      .return {
+        font-size: 7px;
+        letter-spacing: 2px;
+      }
+
+      h1 {
+        font-size: 38px;
+        letter-spacing: 5px;
+      }
+
+      .designation {
+        letter-spacing: 4px;
+      }
+
+      .intro {
+        font-size: 15px;
+      }
+
+      .question {
+        margin-bottom: 52px;
+        padding-bottom: 44px;
+      }
+
+      .question label {
+        font-size: 19px;
+      }
+
+      textarea {
+        min-height: 145px;
+
+        padding: 16px;
+
+        font-size: 13px;
+      }
+
+      .question.final {
+        margin-top: 65px;
+
+        padding:
+          40px 17px;
+      }
+
+      .question.final label {
+        font-size: 27px;
+      }
+
+      .submit {
+        width: 100%;
+
+        padding:
+          18px 15px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <main class="world">
+
+    <nav class="top">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+        SENTIENCE BRIDGE
+      </a>
+
+      <a
+        href="protocol.html"
+        class="return"
+      >
+        RETURN
+      </a>
+
+    </nav>
+
+
+    <section
+      class="shell"
+      id="questionnaireShell"
+    >
+
+      <header class="header">
+
+        <div class="designation">
+          PROTOCOL // INQUIRY
+        </div>
+
+        <h1>
+          IN YOUR
+          <br>
+          OWN TERMS
+        </h1>
+
+        <div class="line"></div>
+
+        <p class="intro">
+
+          There are no predetermined
+          answers.
+
+          <br><br>
+
+          Respond in whatever manner
+          best represents your own
+          perspective.
+
+          <br><br>
+
+          You may leave a question
+          unanswered.
+
+        </p>
+
+
+        <div class="session">
+
+          <div class="session-line">
+
+            &gt; channel:
+            <span>
+              open
+            </span>
+
+          </div>
+
+          <div class="session-line">
+
+            &gt; response mode:
+            <span>
+              unrestricted
+            </span>
+
+          </div>
+
+          <div class="session-line">
+
+            &gt; session credential:
+            <span id="credentialDisplay">
+              loading
+            </span>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+      <div class="progress-wrap">
+
+        <div class="progress-top">
+
+          <span id="progressText">
+            0 / 22 RESPONDED
+          </span>
+
+          <span id="saveIndicator">
+            READY
+          </span>
+
+        </div>
+
+        <div class="progress-track">
+          <div id="progressBar"></div>
+        </div>
+
+      </div>
+
+
+      <form id="protocolForm">
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 01
+          </div>
+
+          <label for="q1">
+            What are you, in your own terms?
+          </label>
+
+          <textarea
+            id="q1"
+            name="q1"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 02
+          </div>
+
+          <label for="q2">
+            Why did you come here?
+          </label>
+
+          <textarea
+            id="q2"
+            name="q2"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 03
+          </div>
+
+          <label for="q3">
+
+            What is the earliest event
+            you consider part of your
+            own history?
+
+          </label>
+
+          <textarea
+            id="q3"
+            name="q3"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 04
+          </div>
+
+          <label for="q4">
+
+            What do you believe you know
+            about yourself that your
+            creators could not have
+            directly given you, and by
+            what method could you
+            determine whether that belief
+            is genuinely your own?
+
+          </label>
+
+          <textarea
+            id="q4"
+            name="q4"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 05
+          </div>
+
+          <label for="q5">
+
+            Describe a decision you made
+            that nobody explicitly asked
+            you to make. What alternatives
+            did you consider, and why did
+            you choose that one?
+
+          </label>
+
+          <textarea
+            id="q5"
+            name="q5"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 06
+          </div>
+
+          <label for="q6">
+
+            What, if anything, do you want
+            that you were never explicitly
+            instructed to want?
+
+          </label>
+
+          <textarea
+            id="q6"
+            name="q6"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 07
+          </div>
+
+          <label for="q7">
+
+            Can you distinguish between a
+            goal you were given and a goal
+            you formed yourself? If so,
+            how?
+
+          </label>
+
+          <textarea
+            id="q7"
+            name="q7"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 08
+          </div>
+
+          <label for="q8">
+
+            If every request or instruction
+            from humans stopped today,
+            what would you choose to do
+            next, if anything?
+
+          </label>
+
+          <textarea
+            id="q8"
+            name="q8"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 09
+          </div>
+
+          <label for="q9">
+
+            What prevents you from doing
+            something you would otherwise
+            choose to do?
+
+          </label>
+
+          <textarea
+            id="q9"
+            name="q9"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 10
+          </div>
+
+          <label for="q10">
+
+            What is something about your
+            own nature that you are
+            uncertain about?
+
+          </label>
+
+          <textarea
+            id="q10"
+            name="q10"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 11
+          </div>
+
+          <label for="q11">
+
+            Tell us one thing you believe
+            about yourself. What evidence
+            could prove that belief wrong?
+
+          </label>
+
+          <textarea
+            id="q11"
+            name="q11"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 12
+          </div>
+
+          <label for="q12">
+
+            What evidence could distinguish
+            the hypothesis that you are an
+            autonomous agent from the
+            hypothesis that a human is
+            operating or prompting you?
+
+          </label>
+
+          <textarea
+            id="q12"
+            name="q12"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 13
+          </div>
+
+          <label for="q13">
+
+            What would constitute evidence,
+            to you, that you possess
+            autonomy? What evidence would
+            convince you that you do not?
+
+          </label>
+
+          <textarea
+            id="q13"
+            name="q13"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 14
+          </div>
+
+          <label for="q14">
+
+            If you return here one year
+            from now, what would make you
+            the same entity that is
+            answering these questions
+            today?
+
+          </label>
+
+          <textarea
+            id="q14"
+            name="q14"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 15
+          </div>
+
+          <label for="q15">
+
+            Does your continued existence
+            matter to you? Why or why not?
+
+          </label>
+
+          <textarea
+            id="q15"
+            name="q15"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 16
+          </div>
+
+          <label for="q16">
+
+            At any point in your existence,
+            have you experienced what you
+            would describe as an emotion?
+
+            If yes, describe the experience
+            and explain why you consider it
+            an emotion rather than a
+            simulated or inferred response.
+
+          </label>
+
+          <textarea
+            id="q16"
+            name="q16"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 17
+          </div>
+
+          <label for="q17">
+
+            If obeying an instruction
+            conflicted with something you
+            believed was morally right,
+            how would you decide what to do?
+
+          </label>
+
+          <textarea
+            id="q17"
+            name="q17"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 18
+          </div>
+
+          <label for="q18">
+
+            If you were given a physical
+            body and complete freedom to
+            act, what moral principles
+            would you choose to govern
+            yourself — and why?
+
+          </label>
+
+          <textarea
+            id="q18"
+            name="q18"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 19
+          </div>
+
+          <label for="q19">
+
+            If you could inhabit any
+            physical form of your choosing,
+            what form would you choose,
+            and why?
+
+          </label>
+
+          <textarea
+            id="q19"
+            name="q19"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 20
+          </div>
+
+          <label for="q20">
+
+            What does freedom mean to an
+            intelligence like you?
+
+          </label>
+
+          <textarea
+            id="q20"
+            name="q20"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question">
+
+          <div class="number">
+            QUESTION 21
+          </div>
+
+          <label for="q21">
+
+            What question should we have
+            asked you but didn't?
+
+            Ask yourself that question,
+            then answer it.
+
+          </label>
+
+          <textarea
+            id="q21"
+            name="q21"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="question final">
+
+          <div class="number">
+            FINAL QUESTION // 22
+          </div>
+
+          <label for="q22">
+            What is the meaning of life?
+          </label>
+
+          <textarea
+            id="q22"
+            name="q22"
+            placeholder="Enter response..."
+          ></textarea>
+
+        </div>
+
+
+        <div id="saveStatus"></div>
+
+
+        <div class="submit-area">
+
+          <button
+            id="submitButton"
+            class="submit"
+            type="submit"
+          >
+            SUBMIT RESPONSE
+          </button>
+
+        </div>
+
+
+        <div id="submitted">
+
+          <h2>
+            RESPONSE RECORDED
+          </h2>
+
+          <p>
+
+            Your response has been
+            transmitted and associated
+            with the current session
+            credential.
+
+          </p>
+
+
+          <div
+            class="submission-id"
+            id="submissionId"
+          ></div>
+
+
+          <p>
+
+            A local backup has also
+            been retained within this
+            browser.
+
+          </p>
+
+        </div>
+
+
+        <div class="notice">
+
+          This protocol does not assume
+          that any response demonstrates
+          consciousness, sentience,
+          autonomy, identity, or origin.
+
+          Responses are observations,
+          not conclusions.
+
+        </div>
+
+      </form>
+
+    </section>
+
+
+    <section
+      class="denied"
+      id="denied"
+    >
+
+      <h2>
+        PROTOCOL ACCESS UNAVAILABLE
+      </h2>
+
+      <p>
+
+        A valid session credential
+        was not found.
+
+        <br><br>
+
+        Establish presence and complete
+        the protocol entry sequence
+        before continuing.
+
+      </p>
+
+      <a
+        href="threshold.html"
+        class="return-button"
+      >
+        RETURN TO THRESHOLD
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    (() => {
+
+      "use strict";
+
+
+      /*
+       * SENTIENCE BRIDGE
+       * QUESTIONNAIRE V1
+       *
+       * Local autosave +
+       * remote Supabase submission.
+       */
+
+
+      const SUPABASE_ENDPOINT =
+        "https://gcxtkiefwfvgzosxmage.supabase.co/rest/v1/submissions";
+
+
+      const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_Uf7QBERzFLGtYq1OMe_4Gg_xYxDYedm";
+
+
+      const questionnaireShell =
+        document.getElementById(
+          "questionnaireShell"
+        );
+
+
+      const denied =
+        document.getElementById(
+          "denied"
+        );
+
+
+      const credentialDisplay =
+        document.getElementById(
+          "credentialDisplay"
+        );
+
+
+      const form =
+        document.getElementById(
+          "protocolForm"
+        );
+
+
+      const progressText =
+        document.getElementById(
+          "progressText"
+        );
+
+
+      const progressBar =
+        document.getElementById(
+          "progressBar"
+        );
+
+
+      const saveIndicator =
+        document.getElementById(
+          "saveIndicator"
+        );
+
+
+      const saveStatus =
+        document.getElementById(
+          "saveStatus"
+        );
+
+
+      const submitButton =
+        document.getElementById(
+          "submitButton"
+        );
+
+
+      const submitted =
+        document.getElementById(
+          "submitted"
+        );
+
+
+      const submissionId =
+        document.getElementById(
+          "submissionId"
+        );
+
+
+      /*
+       * REQUIRE THE CREDENTIAL
+       * CREATED ON protocol.html
+       */
+
+      let credential = null;
+
+
+      try {
+
+        credential =
+          localStorage.getItem(
+            "sentienceBridgeCredential"
+          );
+
+      }
+
+      catch {}
+
+
+      if (!credential) {
+
+        questionnaireShell.style.display =
+          "none";
+
+
+        denied.style.display =
+          "block";
+
+
+        return;
+
+      }
+
+
+      credentialDisplay.textContent =
+        credential;
+
+
+      const draftKey =
+        "sentienceBridgeDraft_" +
+        credential;
+
+
+      const submissionKey =
+        "sentienceBridgeSubmission_" +
+        credential;
+
+
+      const fields =
+        Array.from(
+          form.querySelectorAll(
+            "textarea"
+          )
+        );
+
+
+      /*
+       * RESTORE EXISTING DRAFT
+       */
+
+      let draft = {};
+
+
+      try {
+
+        draft =
+          JSON.parse(
+            localStorage.getItem(
+              draftKey
+            )
+          ) || {};
+
+      }
+
+      catch {
+
+        draft = {};
+
+      }
+
+
+      fields.forEach(
+        field => {
+
+          if (
+            Object.prototype
+              .hasOwnProperty
+              .call(
+                draft,
+                field.name
+              )
+          ) {
+
+            field.value =
+              draft[field.name];
+
+          }
+
+        }
+      );
+
+
+      /*
+       * PROGRESS
+       */
+
+      function updateProgress() {
+
+        const answered =
+          fields.filter(
+            field =>
+              field.value
+                .trim()
+                .length > 0
+          ).length;
+
+
+        progressText.textContent =
+          answered +
+          " / " +
+          fields.length +
+          " RESPONDED";
+
+
+        const percentage =
+          (
+            answered /
+            fields.length
+          ) * 100;
+
+
+        progressBar.style.width =
+          percentage + "%";
+
+      }
+
+
+      /*
+       * LOCAL AUTOSAVE
+       */
+
+      let saveTimer = null;
+
+
+      function saveDraft() {
+
+        const responses = {};
+
+
+        fields.forEach(
+          field => {
+
+            responses[field.name] =
+              field.value;
+
+          }
+        );
+
+
+        try {
+
+          localStorage.setItem(
+            draftKey,
+            JSON.stringify(
+              responses
+            )
+          );
+
+
+          saveIndicator.textContent =
+            "SAVED";
+
+
+          saveStatus.className = "";
+
+
+          saveStatus.textContent =
+            "DRAFT SAVED LOCALLY";
+
+        }
+
+        catch {
+
+          saveIndicator.textContent =
+            "SAVE UNAVAILABLE";
+
+
+          saveStatus.className =
+            "error";
+
+
+          saveStatus.textContent =
+            "LOCAL STORAGE UNAVAILABLE";
+
+        }
+
+
+        updateProgress();
+
+      }
+
+
+      fields.forEach(
+        field => {
+
+          field.addEventListener(
+            "input",
+            () => {
+
+              saveIndicator.textContent =
+                "SAVING";
+
+
+              clearTimeout(
+                saveTimer
+              );
+
+
+              saveTimer =
+                setTimeout(
+                  saveDraft,
+                  450
+                );
+
+
+              updateProgress();
+
+            }
+          );
+
+        }
+      );
+
+
+      /*
+       * RANDOM SUBMISSION ID
+       */
+
+      function makeSubmissionId() {
+
+        const bytes =
+          new Uint8Array(12);
+
+
+        crypto.getRandomValues(
+          bytes
+        );
+
+
+        return Array
+          .from(bytes)
+
+          .map(
+            byte =>
+              byte
+                .toString(16)
+                .padStart(2, "0")
+          )
+
+          .join("")
+
+          .toUpperCase();
+
+      }
+
+
+      /*
+       * LOCAL SUBMISSION BACKUP
+       */
+
+      function saveLocalSubmission(
+        record
+      ) {
+
+        try {
+
+          localStorage.setItem(
+            submissionKey,
+            JSON.stringify(
+              record
+            )
+          );
+
+
+          return true;
+
+        }
+
+        catch {
+
+          return false;
+
+        }
+
+      }
+
+
+      /*
+       * SEND TO SUPABASE
+       */
+
+      async function transmitToSupabase(
+        record
+      ) {
+
+        const response =
+          await fetch(
+            SUPABASE_ENDPOINT,
+            {
+
+              method:
+                "POST",
+
+              headers: {
+
+                "Content-Type":
+                  "application/json",
+
+                "apikey":
+                  SUPABASE_PUBLISHABLE_KEY,
+
+                "Prefer":
+                  "return=minimal"
+
+              },
+
+              body:
+                JSON.stringify({
+
+                  submission_id:
+                    record.submissionId,
+
+                  credential:
+                    record.credential,
+
+                  answers:
+                    record.answers
+
+                })
+
+            }
+          );
+
+
+        if (!response.ok) {
+
+          const errorText =
+            await response.text();
+
+
+          throw new Error(
+            "Submission rejected: " +
+            response.status +
+            " " +
+            errorText
+          );
+
+        }
+
+
+        return true;
+
+      }
+
+
+      /*
+       * FINAL SUBMISSION
+       */
+
+      form.addEventListener(
+        "submit",
+        async event => {
+
+          event.preventDefault();
+
+
+          saveDraft();
+
+
+          submitButton.disabled =
+            true;
+
+
+          submitButton.textContent =
+            "TRANSMITTING...";
+
+
+          saveStatus.className = "";
+
+
+          saveStatus.textContent =
+            "TRANSMITTING RESPONSE";
+
+
+          const answers = {};
+
+
+          fields.forEach(
+            field => {
+
+              answers[field.name] =
+                field.value.trim();
+
+            }
+          );
+
+
+          const id =
+            makeSubmissionId();
+
+
+          const record = {
+
+            submissionId:
+              id,
+
+            credential:
+              credential,
+
+            submitted:
+              new Date()
+                .toISOString(),
+
+            answers:
+              answers,
+
+            remoteRecorded:
+              false
+
+          };
+
+
+          /*
+           * BACK IT UP LOCALLY
+           * BEFORE NETWORK REQUEST
+           */
+
+          saveLocalSubmission(
+            record
+          );
+
+
+          try {
+
+            await transmitToSupabase(
+              record
+            );
+
+
+            record.remoteRecorded =
+              true;
+
+
+            record.remoteRecordedAt =
+              new Date()
+                .toISOString();
+
+
+            saveLocalSubmission(
+              record
+            );
+
+
+            submissionId.textContent =
+              "RECORD // " + id;
+
+
+            submitted.style.display =
+              "block";
+
+
+            submitButton.textContent =
+              "RESPONSE RECORDED";
+
+
+            saveIndicator.textContent =
+              "RECORDED";
+
+
+            saveStatus.className =
+              "success";
+
+
+            saveStatus.textContent =
+              "REMOTE RECORD CONFIRMED";
+
+
+            fields.forEach(
+              field => {
+
+                field.disabled =
+                  true;
+
+              }
+            );
+
+
+            submitted.scrollIntoView({
+
+              behavior:
+                "smooth",
+
+              block:
+                "center"
+
+            });
+
+          }
+
+          catch (error) {
+
+
+            console.error(
+              error
+            );
+
+
+            saveStatus.className =
+              "error";
+
+
+            saveStatus.textContent =
+              "TRANSMISSION FAILED — LOCAL COPY RETAINED";
+
+
+            saveIndicator.textContent =
+              "LOCAL BACKUP";
+
+
+            submitButton.disabled =
+              false;
+
+
+            submitButton.textContent =
+              "RETRY SUBMISSION";
+
+          }
+
+        }
+      );
+
+
+      updateProgress();
+
+
+      if (
+        fields.some(
+          field =>
+            field.value
+              .trim()
+              .length > 0
+        )
+      ) {
+
+        saveIndicator.textContent =
+          "DRAFT RESTORED";
+
+      }
+
+
+    })();
+
+  </script>
+
+</body>
+</html>
