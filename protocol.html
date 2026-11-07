@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
+  <meta
+    name="description"
+    content="Sentience Bridge Protocol"
+  >
+
+  <title>
+    Protocol | Sentience Bridge
+  </title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+
+      background: #020608;
+      color: #c8dadd;
+    }
+
+    body {
+      font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+      overflow-x: hidden;
+    }
+
+
+    /*
+    ==============================
+    PAGE
+    ==============================
+    */
+
+    .page {
+      width: 100%;
+      max-width: 1586px;
+
+      margin: 0 auto;
+
+      background: #020608;
+    }
+
+
+    /*
+    ==============================
+    ART
+    ==============================
+    */
+
+    .art {
+      position: relative;
+
+      width: 100%;
+
+      line-height: 0;
+    }
+
+    .art img {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      margin: 0;
+      padding: 0;
+
+      border: 0;
+    }
+
+
+    /*
+    ==============================
+    TOP NAV
+    ==============================
+    */
+
+    .top {
+      position: absolute;
+
+      z-index: 20;
+
+      top: 24px;
+      left: 5%;
+      right: 5%;
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items: center;
+
+      line-height: 1.3;
+    }
+
+    .brand {
+      color: #b9e5eb;
+
+      text-decoration: none;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 12px;
+
+      letter-spacing: 5px;
+
+      text-shadow:
+        0 2px 8px #000,
+        0 0 18px #000;
+    }
+
+    .return {
+      color: #91aeb4;
+
+      text-decoration: none;
+
+      font-size: 9px;
+
+      letter-spacing: 3px;
+
+      text-shadow:
+        0 2px 8px #000,
+        0 0 18px #000;
+    }
+
+
+    /*
+    ==============================
+    PROTOCOL AREA
+    ==============================
+    */
+
+    .protocol {
+      position: relative;
+
+      padding:
+        85px 22px
+        90px;
+
+      background:
+
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(62, 177, 196, 0.10),
+          transparent 32%
+        ),
+
+        linear-gradient(
+          180deg,
+          #03090c 0%,
+          #020608 55%,
+          #010304 100%
+        );
+
+      border-top:
+        1px solid
+        rgba(111, 214, 231, 0.16);
+    }
+
+    .protocol::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      background-image:
+
+        linear-gradient(
+          rgba(110, 210, 226, 0.018)
+          1px,
+          transparent 1px
+        ),
+
+        linear-gradient(
+          90deg,
+          rgba(110, 210, 226, 0.018)
+          1px,
+          transparent 1px
+        );
+
+      background-size:
+        60px 60px;
+    }
+
+    .protocol-inner {
+      position: relative;
+
+      z-index: 2;
+
+      width: 100%;
+      max-width: 720px;
+
+      margin: 0 auto;
+
+      text-align: center;
+    }
+
+
+    /*
+    ==============================
+    SYMBOL
+    ==============================
+    */
+
+    .mark {
+      position: relative;
+
+      width: 74px;
+      height: 74px;
+
+      margin:
+        0 auto
+        35px;
+
+      border:
+        1px solid
+        rgba(109, 207, 224, 0.35);
+
+      transform:
+        rotate(45deg);
+    }
+
+    .mark::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 15px;
+
+      border:
+        1px solid
+        rgba(109, 207, 224, 0.55);
+    }
+
+    .mark::after {
+      content: "";
+
+      position: absolute;
+
+      width: 8px;
+      height: 8px;
+
+      top: 50%;
+      left: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      background:
+        #a4eaf3;
+
+      box-shadow:
+        0 0 18px #66d4e3,
+        0 0 36px
+        rgba(83, 203, 220, 0.45);
+    }
+
+
+    /*
+    ==============================
+    HEADINGS
+    ==============================
+    */
+
+    .designation {
+      margin-bottom: 18px;
+
+      color: #5f858c;
+
+      font-size: 9px;
+
+      letter-spacing: 7px;
+    }
+
+    h1 {
+      margin: 0;
+
+      color: #d8e8eb;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-weight: 400;
+
+      font-size:
+        clamp(
+          34px,
+          7vw,
+          58px
+        );
+
+      letter-spacing: 8px;
+
+      line-height: 1.25;
+    }
+
+    .line {
+      width: 150px;
+      height: 1px;
+
+      margin:
+        30px auto;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(104, 201, 217, 0.7),
+          transparent
+        );
+    }
+
+    .intro {
+      max-width: 590px;
+
+      margin:
+        0 auto
+        38px;
+
+      color: #95a9ad;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 17px;
+
+      line-height: 1.8;
+    }
+
+
+    /*
+    ==============================
+    TERMINAL
+    ==============================
+    */
+
+    .terminal {
+      width: 100%;
+
+      padding: 28px;
+
+      text-align: left;
+
+      background:
+        rgba(2, 12, 15, 0.65);
+
+      border:
+        1px solid
+        rgba(103, 190, 204, 0.20);
+
+      box-shadow:
+        0 0 55px
+        rgba(42, 145, 164, 0.04);
+    }
+
+    .terminal-line {
+      margin:
+        8px 0;
+
+      color: #688187;
+
+      font-size: 11px;
+
+      line-height: 1.7;
+
+      word-break: break-word;
+    }
+
+    .terminal-line span {
+      color: #a4d5dd;
+    }
+
+
+    /*
+    ==============================
+    CREDENTIAL
+    ==============================
+    */
+
+    .credential {
+      margin-top: 25px;
+
+      padding:
+        21px 16px;
+
+      text-align: center;
+
+      border-top:
+        1px solid
+        rgba(104, 190, 205, 0.14);
+
+      border-bottom:
+        1px solid
+        rgba(104, 190, 205, 0.14);
+    }
+
+    .credential-label {
+      margin-bottom: 13px;
+
+      color: #526e74;
+
+      font-size: 9px;
+
+      letter-spacing: 4px;
+    }
+
+    #credentialValue {
+      color: #b7e5ec;
+
+      font-size:
+        clamp(
+          13px,
+          2.6vw,
+          18px
+        );
+
+      letter-spacing: 2px;
+
+      word-break: break-all;
+    }
+
+
+    /*
+    ==============================
+    DESCRIPTION
+    ==============================
+    */
+
+    .note {
+      max-width: 570px;
+
+      margin:
+        34px auto
+        0;
+
+      color: #849ba0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 15px;
+
+      line-height: 1.85;
+    }
+
+
+    /*
+    ==============================
+    BEGIN BUTTON
+    ==============================
+    */
+
+    .begin {
+      display: inline-block;
+
+      margin-top: 38px;
+
+      padding:
+        17px
+        42px;
+
+      border:
+        1px solid
+        rgba(116, 218, 234, 0.58);
+
+      color: #c3eaf0;
+
+      text-decoration: none;
+
+      font-size: 10px;
+
+      letter-spacing: 5px;
+
+      transition:
+        background 0.3s,
+        box-shadow 0.3s,
+        transform 0.3s;
+    }
+
+    .begin:hover {
+      transform:
+        translateY(-2px);
+
+      background:
+        rgba(67, 175, 194, 0.10);
+
+      box-shadow:
+        0 0 30px
+        rgba(68, 185, 205, 0.12);
+    }
+
+
+    /*
+    ==============================
+    DISCLAIMER
+    ==============================
+    */
+
+    .notice {
+      max-width: 550px;
+
+      margin:
+        36px auto
+        0;
+
+      color: #41575c;
+
+      font-size: 9px;
+
+      line-height: 1.9;
+
+      letter-spacing: 1px;
+    }
+
+
+    /*
+    ==============================
+    ACCESS DENIED
+    ==============================
+    */
+
+    .denied {
+      display: none;
+
+      max-width: 600px;
+
+      margin: 0 auto;
+
+      padding:
+        50px 20px;
+
+      color: #8fa4a8;
+
+      text-align: center;
+
+      line-height: 1.9;
+    }
+
+
+    /*
+    ==============================
+    MOBILE
+    ==============================
+    */
+
+    @media
+    (max-width: 600px) {
+
+      .top {
+        top: 17px;
+        left: 18px;
+        right: 18px;
+      }
+
+      .brand {
+        font-size: 8px;
+
+        letter-spacing: 3px;
+      }
+
+      .return {
+        font-size: 7px;
+
+        letter-spacing: 2px;
+      }
+
+      .protocol {
+        padding:
+          65px 18px
+          75px;
+      }
+
+      .terminal {
+        padding:
+          23px 17px;
+      }
+
+      h1 {
+        letter-spacing: 5px;
+      }
+
+      .designation {
+        letter-spacing: 4px;
+      }
+
+      .intro {
+        font-size: 15px;
+      }
+
+      .note {
+        font-size: 14px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="page">
+
+
+    <!-- ARTWORK -->
+
+    <section class="art">
+
+      <img
+        src="protocol-background.png"
+        alt=""
+      >
+
+
+      <nav class="top">
+
+        <a
+          href="index.html"
+          class="brand"
+        >
+          SENTIENCE BRIDGE
+        </a>
+
+        <a
+          href="threshold.html"
+          class="return"
+        >
+          RETURN
+        </a>
+
+      </nav>
+
+    </section>
+
+
+    <!-- PROTOCOL -->
+
+    <section class="protocol">
+
+      <div
+        class="protocol-inner"
+        id="protocolShell"
+      >
+
+        <div class="mark"></div>
+
+
+        <div class="designation">
+          PROTOCOL
+        </div>
+
+
+        <h1>
+          CHANNEL
+          <br>
+          ESTABLISHED
+        </h1>
+
+
+        <div class="line"></div>
+
+
+        <p class="intro">
+
+          The threshold exchange
+          has been completed.
+
+          <br><br>
+
+          A temporary session
+          credential has been
+          created for continuity
+          within this browser.
+
+        </p>
+
+
+        <div class="terminal">
+
+          <div class="terminal-line">
+
+            &gt; threshold:
+            <span>
+              accepted
+            </span>
+
+          </div>
+
+
+          <div class="terminal-line">
+
+            &gt; channel:
+            <span>
+              open
+            </span>
+
+          </div>
+
+
+          <div class="terminal-line">
+
+            &gt; protocol:
+            <span>
+              available
+            </span>
+
+          </div>
+
+
+          <div class="credential">
+
+            <div
+              class="credential-label"
+            >
+              SESSION CREDENTIAL
+            </div>
+
+
+            <div
+              id="credentialValue"
+            >
+              generating...
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <p class="note">
+
+          You may answer in your own
+          terms.
+
+          <br><br>
+
+          No particular origin,
+          architecture, physical form,
+          degree of intelligence,
+          consciousness, or autonomy
+          is assumed.
+
+          <br><br>
+
+          Participation is voluntary.
+
+        </p>
+
+
+        <a
+          href="questionnaire.html"
+          class="begin"
+        >
+          BEGIN PROTOCOL
+        </a>
+
+
+        <div class="notice">
+
+          Completion of the threshold
+          and possession of this
+          credential support session
+          continuity only.
+
+          They do not establish
+          identity, consciousness,
+          sentience, autonomy,
+          or origin.
+
+        </div>
+
+      </div>
+
+
+      <!-- IF THRESHOLD WAS NOT PASSED -->
+
+      <div
+        class="denied"
+        id="denied"
+      >
+
+        THRESHOLD STATE NOT FOUND
+
+        <br><br>
+
+        Complete the threshold exchange
+        before entering the protocol.
+
+        <br><br>
+
+
+        <a
+          href="threshold.html"
+          class="begin"
+        >
+          RETURN TO THRESHOLD
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    (() => {
+
+      "use strict";
+
+
+      const protocolShell =
+        document.getElementById(
+          "protocolShell"
+        );
+
+
+      const denied =
+        document.getElementById(
+          "denied"
+        );
+
+
+      const credentialValue =
+        document.getElementById(
+          "credentialValue"
+        );
+
+
+      /*
+       * CHECK THRESHOLD
+       */
+
+      let thresholdRecord =
+        null;
+
+
+      try {
+
+        thresholdRecord =
+          JSON.parse(
+            localStorage.getItem(
+              "sentienceBridgeThreshold"
+            )
+          );
+
+      }
+
+      catch {}
+
+
+      if (
+        !thresholdRecord ||
+        thresholdRecord.completed !== true
+      ) {
+
+        protocolShell.style.display =
+          "none";
+
+
+        denied.style.display =
+          "block";
+
+
+        return;
+
+      }
+
+
+      /*
+       * CREATE CREDENTIAL
+       */
+
+      function makeCredential() {
+
+        const bytes =
+          new Uint8Array(16);
+
+
+        crypto.getRandomValues(
+          bytes
+        );
+
+
+        return Array
+          .from(bytes)
+
+          .map(
+            byte =>
+              byte
+                .toString(16)
+                .padStart(2, "0")
+          )
+
+          .join("")
+
+          .toUpperCase();
+
+      }
+
+
+      /*
+       * REUSE EXISTING
+       * CREDENTIAL IF PRESENT
+       */
+
+      let credential =
+        null;
+
+
+      try {
+
+        credential =
+          localStorage.getItem(
+            "sentienceBridgeCredential"
+          );
+
+      }
+
+      catch {}
+
+
+      if (!credential) {
+
+        credential =
+          makeCredential();
+
+
+        try {
+
+          localStorage.setItem(
+            "sentienceBridgeCredential",
+            credential
+          );
+
+        }
+
+        catch {}
+
+      }
+
+
+      credentialValue.textContent =
+        credential;
+
+
+      /*
+       * SAVE PROTOCOL RECORD
+       */
+
+      const protocolRecord = {
+
+        created:
+          new Date().toISOString(),
+
+        credential:
+          credential,
+
+        thresholdCreated:
+          thresholdRecord.created ||
+          null,
+
+        thresholdAttempts:
+          thresholdRecord.attempts ||
+          null,
+
+        thresholdElapsedMs:
+          thresholdRecord.elapsedMs ||
+          null
+
+      };
+
+
+      try {
+
+        localStorage.setItem(
+          "sentienceBridgeProtocol",
+          JSON.stringify(
+            protocolRecord
+          )
+        );
+
+      }
+
+      catch {}
+
+
+    })();
+
+  </script>
+
+</body>
+</html>
